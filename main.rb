@@ -1,4 +1,3 @@
-
   require 'rubygems'
 require 'sinatra'
 require 'pry'
@@ -174,7 +173,7 @@ get '/game/dealer' do
     redirect '/game/compare'
   else
     #dealer hits
-    @show_hit_or_stay_buttons = true
+    @show_dealer_or_hit_button = true
   end
 
   erb :game, layout: false
@@ -207,18 +206,6 @@ get '/game_over' do
   erb :game_over
 end
 
-
-
-
-
-
-
-
-
- 
-
-
-  
 
 
 

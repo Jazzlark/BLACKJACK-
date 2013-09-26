@@ -1,4 +1,4 @@
- require 'rubygems'
+require 'rubygems'
 require 'sinatra'
 require 'pry'
 
@@ -207,6 +207,11 @@ end
 get '/game_over' do 
   erb :game_over
 end
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-  require 'rubygems'
+ require 'rubygems'
 require 'sinatra'
 require 'pry'
 
@@ -65,10 +65,10 @@ def loser!(msg)
   @loser = "<strong>#{session[:player_name]} loses.</strong> #{msg}"
 end
 
-def tie (msg)
+def tie! (msg)
   @play_again = true
   @show_hit_or_stay_buttons = false
-  @swinner = "<strong>It's a tie!! </strong> #{msg}"
+  @winner = "<strong>It's a tie!! </strong> #{msg}"
   end
 end
 
@@ -111,7 +111,7 @@ if params[:bet_amount].nil? || params[:bet_amount].to_i == 0
   halt erb(:bet)
 elsif params[:bet_amount].to_i > session[:player_pot]
   @error = "Bet amount cannot be greater than what you have ($#{session[player_pot]}"
-halt erb (:bet)
+halt erb(:bet)
 else #happy path
   session[:player_bet] = params[:bet_amount].to_i
   redirect '/game'
@@ -161,19 +161,20 @@ get '/game/dealer' do
   @show_hit_or_stay_buttons = false
   
   #decision tree
+ 
 
-  dealer_total = calculate_total (session[:dealer_cards])
+  dealer_total = calculate_total(session[:dealer_cards])
 
   if dealer_total == BLACKJACK_AMOUNT 
     loser!("Dealer hit blackjack!")
   elsif dealer_total > BLACKJACK_AMOUNT 
-    winner!("Dealer busteed at #{dealer_total}.")
+    winner!("Dealer busted at #{dealer_total}.")
   elsif dealer_total >= DEALER_MIN_HIT #17, 18, 19, 20 
     #dealer stays
     redirect '/game/compare'
   else
     #dealer hits
-    @show_dealer_or_hit_button = true
+    @show_dealer_hit_button = true
   end
 
   erb :game, layout: false
@@ -186,6 +187,7 @@ end
 
 get '/game/compare' do
   @show_hit_or_stay_buttons= false
+
 
   player_total = calculate_total(session[:player_cards])
   dealer_total = calculate_total(session[:dealer_cards])
@@ -207,6 +209,20 @@ get '/game_over' do
 end
 
 
+
+
+
+
+
+ 
+
+  
+ 
+
+  
+  
+
+ 
 
 
 

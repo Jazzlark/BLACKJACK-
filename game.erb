@@ -27,10 +27,10 @@
   <% end %>
 <% end %>
 
-<% if @show_dealer_or_hit_button %>
+<% if @show_dealer_hit_button %>
   <p>
     <h5>Dealer has <%= calculate_total(session[:dealer_cards])%> and will hit.</h5>
-    <form id="dealer_hit" action='game/dealer/hit' method='post'>
+    <form id="dealer_hit" action='/game/dealer/hit' method='post'>
       <input type='submit' class='btn btn-primary' value= 'Click to see dealer card &rarr;'>
     </form>
   </p>
@@ -63,3 +63,5 @@ What would <%= session[:player_name]%> like to do?
 <% end %>
 </p>
 </div>
+
+    

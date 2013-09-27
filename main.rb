@@ -158,7 +158,7 @@ post '/game/player/stay' do
 
 get '/game/dealer' do
   session[:turn] = "dealer"
-  @show_hit_or_stay_buttons = false
+  @show_dealer_hit_button = false
   
   #decision tree
  
@@ -212,6 +212,17 @@ end
 
 
 
+
+
+
+
+  
+  
+
+  
+  
+  
+ 
 
 
 
